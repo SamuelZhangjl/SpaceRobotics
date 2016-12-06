@@ -22,12 +22,16 @@ a2 = 0.5;
 
 %Joint angle 1 right
 Angle1 = atan2d(P_arm(2),P_arm(1)) - atan2d(d2,sqrt(P_arm(1)^2 + P_arm(2)^2 - d2^2));
+%Angle1 have two solution
+%Angle1 = atan2d(P_arm(2),P_arm(1)) - atan2d(d2,-sqrt(P_arm(1)^2 + P_arm(2)^2 - d2^2));
 
 %Joint angle 2
 A_Temp = cosd(Angle1)*P_arm(1) + sind(Angle1)*P_arm(2);
 B_Temp = ((A_Temp^2) + (P_arm(3)^2) + (a2^2) - (d4^2)) / (2*a2);
 
 Angle2 = atan2d(A_Temp,P_arm(3)) - atan2d(B_Temp,sqrt(A_Temp^2 + P_arm(3)^2 - B_Temp^2)); 
+%Angle2 have two solution
+%Angle2 = atan2d(A_Temp,P_arm(3)) - atan2d(B_Temp,sqrt(A_Temp^2 + P_arm(3)^2 - B_Temp^2)); 
 
 %Joint angle 3
 Angle3 = atan2d(A_Temp - a2*cosd(Angle2), P_arm(3)+a2*sind(Angle2)) - Angle2;
